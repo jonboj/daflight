@@ -1,0 +1,113 @@
+
+<template>
+
+    <style>
+        /*Workaround until mdc-web issue 46 delivered.*/
+        /*https://github.com/material-components/material-components-web/issues/46*/
+        /*State of element controlled by attribute registerprop*/
+
+
+        /*Not register state don't show classes register*/
+        :not([registerprop]) .register{
+            display: none;
+        }
+
+        /*Not register state show classes signin*/
+        :not([registerprop]) .signin{
+            display: block;
+        }
+
+        /*register state don't show classes signin*/
+        [registerprop] .signin {
+           display: none;
+       }
+
+       /*register state show classes register*/
+       [registerprop] .register{
+           display: inherit;
+       }
+
+        [registerprop] div.register{
+            display: block;
+        }
+
+        signin-reg-page {
+            display: block;
+        }
+
+        .inputform {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content : space-between;
+            width: 100%;
+        }
+
+        .buttonform {
+            margin: 1em;
+            margin-top: 2em;
+        }
+
+        button {
+            margin: 1em;
+        }
+
+    </style>
+
+    <div class="inputform">
+        <!--Register part-->
+        <div class="register">
+            <mdc-textfield-dart>
+                <input type="text" id="firstname" class="mdc-textfield__input">
+                <label for="firstname" class="mdc-textfield__label">First name</label>
+            </mdc-textfield-dart>
+
+            <mdc-textfield-dart>
+                <input type="text" id="lastname" class="mdc-textfield__input">
+                <label for="lastname" class="mdc-textfield__label">Last name</label>
+            </mdc-textfield-dart>
+        </div>
+
+        <!--Email and password common part-->
+        <div class="signin register">
+            <mdc-textfield-dart>
+                <input type="text" id="email" class="mdc-textfield__input" aria-controls="email-helptext">
+                <label class="mdc-textfield__label" for="email">email</label>
+            </mdc-textfield-dart>
+            <p id="email-helptext" class="mdc-textfield-helptext" aria-hidden="true">
+                Email to login with.
+            </p>
+        </div>
+
+        <div class="signin register">
+            <mdc-textfield-dart>
+                <input type="password" id="password" required minlength=6 class="mdc-textfield__input" aria-controls="password-helptext">
+                <label for="password" class="mdc-textfield__label">Password</label>
+            </mdc-textfield-dart>
+            <p id="password-helptext" class="mdc-textfield-helptext" aria-hidden="true">
+                Password, minimum 6 characters.
+            </p>
+        </div>
+    </div>
+
+
+    <!--Signin part-->
+    <div class="signin">
+        <div class="buttonform">
+            Signin with email and password <button  is="mdc-button-dart" class="mdc-button--raised"
+                                                    on-click="signIn">Sign in</button>
+        </div>
+
+        <hr>
+
+        <div class="buttonform">
+            Don't have an account, register here
+            <button is="mdc-button-dart" class="mdc-button--raised" on-click="showRegisterForm">Create Account</button>
+        </div>
+    </div>
+
+    <div class="register buttonform">
+        Check form content and register
+        <button is="mdc-button-dart" class="mdc-button--raised" on-click="readRegisterForm">Register</button>
+    </div>
+
+</template>

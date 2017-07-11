@@ -1,0 +1,136 @@
+
+<template>
+<style>
+    .mdcda-drawer-menu{
+        width: 100%;
+    }
+
+    .box {
+        height: 30em;
+        width: 80%;
+        display: block;
+        padding: 10%;
+    }
+
+    .route-map {
+        height: 30em;
+        width: 100%;
+    }
+
+    .userfield{
+        margin-right: 4px;
+    }
+
+    /* Only show at signedin, not operator first*/
+    :not([signinprop]) .signinshow {
+        display: none;
+    }
+
+    [signinprop] .signinshow {
+        display: inherit;
+    }
+
+    /*Only show when unsignedin, not operator first*/
+    :not([signinprop]) .unsigninshow {
+        display: inherit;
+    }
+
+    [signinprop] .unsigninshow {
+        display: none;
+    }
+
+</style>
+
+<!--Toolbar header-->
+<header class="mdc-toolbar mdc-toolbar--fixed">
+    <div class="mdc-toolbar__row">
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+            <button is="mdcda-icon-button" class="mdc-toolbar__icon--menu" on-click="openDrawer">menu</button>
+        </section>
+
+        <section class="mdc-toolbar__section">
+            <div class="unsigninshow">
+                <span class="mdc-toolbar__title">MyFlight</span>
+            </div>
+        </section>
+
+        <section class="mdc-toolbar__section mdc-toolbar__section--align-end">
+            <div class="signinshow">
+                <span class="mdc-toolbar__title userfield">[[signinName]]</span>
+                <i class="material-icons mdc-toolbar__icon--menu" aria-hidden="true">account_circle</i>
+            </div>
+        </section>
+    </div>
+</header>
+
+<!--Drawer with menu -->
+<mdc-temporary-drawer-dart id="id_drawer">
+    <div class="mdc-temporary-drawer__drawer">
+        <header class="mdc-temporary-drawer__header">
+            <div class="mdc-temporary-drawer__header-content mdc-theme--primary-bg mdc-theme--text-primary-on-primary">
+                <!--Header here-->
+            </div>
+        </header>
+
+        <div class="mdc-temporary-drawer__content">
+            <!--Page select menu-->
+            <mdc-simple-menu-dart id="id_drawer_menu" class="mdcda-drawer-menu" tabindex="-1" selected="{{selectedPage}}">
+                <ul class="mdc-list mdc-simple-menu__items mdcda-drawer-menu">
+
+                    <!--Airports-->
+                    <li class="mdc-list-item" role="option" tabindex="0">
+                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">local_airport</i>
+                        Airports
+                    </li>
+
+                    <!--Map-->
+                    <li class="mdc-list-item" role="option" tabindex="0">
+                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">format_list_bulleted</i>
+                        Route list
+                    </li>
+
+                    <!--List-->
+                    <li class="mdc-list-item" role="option" tabindex="0">
+                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">map</i>
+                        Route on map
+                    </li>
+
+                    <!--Signin/out-->
+                    <li class="mdc-list-item" role="option" tabindex="0">
+                        <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">account_circle</i>
+                        <div class="unsigninshow">Signin / Register</div>
+                        <div class="signinshow">Logout</div>
+                    </li>
+                </ul>
+            </mdc-simple-menu-dart>
+        </div>
+
+    </div>
+</mdc-temporary-drawer-dart>
+
+<!--Content on page -->
+<main class="mdc-toolbar-fixed-adjust">
+    <mdcda-pages id="id_content_pages" class="box" selected-page="[[selectedPage]]">
+
+        <div>
+            <div class="mdc-typography--title titlebox">Airport List</div>
+            <airport-list on-mdcda-list-select-change="selectAirportList"></airport-list>
+        </div>
+
+        <div>
+            <div class="mdc-typography--title titlebox">Route List</div>
+            <route-list on-mdcda-list-select-change="selectRouteHandler"></route-list>
+        </div>
+
+        <div>
+            <div class="mdc-typography--title titlebox">Route Map</div>
+            <div id="id-route-map" class="route-map"></div>
+        </div>
+
+        <div>
+            <signin-reg-page class="unsigninshow"></signin-reg-page>
+        </div>
+    </mdcda-pages>
+</main>
+
+</template>

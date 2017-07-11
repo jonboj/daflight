@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+
+  <title>Daflight</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <script src="packages/mdcdalight/util_js/require.js"></script>
+  <script src="packages/mdcdalight/util_js/mdcweb_load.js"></script>
+
+  <style>
+
+    :root {
+      overflow: hidden;
+    }
+
+    .tempsnackbarhidde {
+      display: none;
+    }
+
+  </style>
+
+  <script defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+
+  <script defer src="main.dart" type="application/dart"></script>
+  <script defer src="packages/browser/dart.js"></script>
+
+</head>
+
+<body class="mdc-typography">
+
+  <entry-page></entry-page>
+
+  <mdc-snackbar-dart class="tempsnackbarhidde">
+    <div class="mdc-snackbar__text"></div>
+    <div class="mdc-snackbar__action-wrapper">
+      <button type="button" class="mdc-button mdc-snackbar__action-button"></button>
+    </div>
+  </mdc-snackbar-dart>
+</body>
+</html>

@@ -1,0 +1,22 @@
+name: daflight
+description: Demo/tutorial dart app for use of mdcdalight lib.
+version: 0.0.1
+
+environment:
+  sdk: '>=1.20.1 <2.0.0'
+
+dependencies:
+  google_maps: '>=3.0.0 <4.0.0'
+  mdcdalight:
+    git:
+      url: git://github.com/jonboj/mdcdalight.git
+
+dev_dependencies:
+  test: '^0.12.20'
+  browser: ^0.10.0
+  dart_to_js_script_rewriter: ^1.0.1
+
+transformers:
+#- $dart2js:
+#    commandLineOptions: [--dump-info]
+- dart_to_js_script_rewriter
