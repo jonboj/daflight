@@ -75,7 +75,7 @@ class EntryPage extends HtmlElement with EntryPagePropBind, BindBaseCtrl, Listen
   }
 
   void registerListener() {
-    listenerMap = {'openDrawer': this.openDrawer,
+    listenerMap = {'toggleDrawer': this.toggleDrawer,
                    'selectAirportList': MdcdaEventUtil.wrapMdcdaHandler(this.selectAirportList),
                    'selectRouteHandler': MdcdaEventUtil.wrapMdcdaHandler(this.selectRouteHandler),
                    'signInHandler' : MdcdaEventUtil.wrapMdcdaHandler(this.signInHandler)};
@@ -105,16 +105,22 @@ class EntryPage extends HtmlElement with EntryPagePropBind, BindBaseCtrl, Listen
     print('EntryPage.selectRouteHandler - selected : ' + (e as SelectChangeEvent).index.toString());
   }
 
-  void openDrawer(Event e){
-    print('EntryPage.openDrawer');
-    _drawer.open(true);
-    _drawerMenu.open(true);
+  void toggleDrawer(Event e){
+    print('EntryPage.toggleDrawer');
+
+    //On mobile when drawer closed with slide the menu state get out of sync.
+    //Small fix by synch of states.
+    if (_drawerMenu.open){
+      _drawerMenu.open = false;
+    }
+    _drawer.open = !_drawer.open;
+    _drawerMenu.open = _drawer.open;
   }
 
   void closeDrawer(){
     print('EntryPage.closeDrawer');
-    _drawer.open(false);
-    //Unnecessary to close menu.
+    _drawerMenu.open = false;
+    _drawer.open = false;
   }
 
   void handleSelectedPageUpdate() {
