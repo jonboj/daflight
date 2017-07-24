@@ -49,9 +49,10 @@ class SigninRegPage extends HtmlElement with ListenerAttrBinding {
     print('SigninRegPage.created()');
     final Node n = HtmlImportManager.nodeFromTemplate(tagBundle);
     this.append(n);
-    listenerMap = {'showRegisterForm' : this.showRegisterForm,
-                   'readRegisterForm' : this.readRegisterForm,
-                   'signIn' : this.signIn};
+
+    listenerHandlers = {'showRegisterForm' : this.showRegisterForm,
+                         'readRegisterForm' : this.readRegisterForm,
+                         'signIn' : this.signIn};
     registerAttributeEventHandlers(this, AttrEventType.EVENT_LIST);
   }
 

@@ -36,11 +36,13 @@ abstract class EntryPagePropBind implements IPropBind {
 
   Map<String, int> get propNameIndex => _propNameMap;
   List<String> get attrKeys => _attrKeys;
-  List<PropertyBindSet> get bindProp => [new PropertyBindSet(SELECTED_PAGE, () => selectedPage, (final int i){selectedPage = i;}),
-                                         new PropertyBindSet(SIGNIN_NAME, () => signinName, (final String s){signinName = s;})];
+  List<PropertyBindSet> get bindProp =>
+      [new PropertyBindSet(SELECTED_PAGE, () => selectedPage, (final int i){selectedPage = i;}),
+       new PropertyBindSet(SIGNIN_NAME, () => signinName, (final String s){signinName = s;})];
 }
 
-class EntryPage extends HtmlElement with EntryPagePropBind, BindBaseCtrl, ListenerAttrBinding implements ICustomBindElement {
+class EntryPage extends HtmlElement with EntryPagePropBind, BindBaseCtrl, ListenerAttrBinding
+                                    implements ICustomBindElement {
 
   static const String SIGNIN_ATTRIBUTE = 'signinprop';
   static final TagBundleCustomDart tagBundle = new TagBundleCustomDart(CUSTOM_ELEM_PATH, EntryPage);
@@ -75,10 +77,11 @@ class EntryPage extends HtmlElement with EntryPagePropBind, BindBaseCtrl, Listen
   }
 
   void registerListener() {
-    listenerMap = {'toggleDrawer': this.toggleDrawer,
-                   'selectAirportList': MdcdaEventUtil.wrapMdcdaHandler(this.selectAirportList),
-                   'selectRouteHandler': MdcdaEventUtil.wrapMdcdaHandler(this.selectRouteHandler),
-                   'signInHandler' : MdcdaEventUtil.wrapMdcdaHandler(this.signInHandler)};
+    listenerHandlers =
+       {'toggleDrawer': this.toggleDrawer,
+        'selectAirportList': MdcdaEventUtil.wrapMdcdaHandler(this.selectAirportList),
+        'selectRouteHandler': MdcdaEventUtil.wrapMdcdaHandler(this.selectRouteHandler),
+        'signInHandler' : MdcdaEventUtil.wrapMdcdaHandler(this.signInHandler)};
 
     List<String> eventTypes = new List<String>.from(AttrEventType.EVENT_LIST);
     eventTypes.add(const SelectChangeEvent().type);

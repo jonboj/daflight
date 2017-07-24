@@ -43,12 +43,13 @@ class AirportDataWrap extends AirportData implements IListItemBind {
 }
 
 class AirportListPropBind implements IPropBind {
-  List<AirportDataWrap> airportList = [const AirportDataWrap('PEK', 'Beijing Capital International Airport', 'China', 40.072444, 116.597497),
-                                       const AirportDataWrap('AMS', 'Amsterdam Schiphol Airport', 'Netherlands', 52.308613, 4.763889),
-                                       const AirportDataWrap('SVO', 'Sheremetyevo International Airport', 'Russian Federation', 55.972642, 37.414589),
-                                       const AirportDataWrap('GRU', 'São Paulo-Guarulhos International Airport', 'Brazil', -23.432075, -46.469511),
-                                       const AirportDataWrap('LAX', 'Los Angeles International Airport', 'United States', 33.942495, -118.408068),
-                                       const AirportDataWrap('JFK', 'John F Kennedy International Airport', 'United States', 40.639751, -73.778926)];
+  List<AirportDataWrap> airportList =
+     [const AirportDataWrap('PEK', 'Beijing Capital International Airport', 'China', 40.072444, 116.597497),
+      const AirportDataWrap('AMS', 'Amsterdam Schiphol Airport', 'Netherlands', 52.308613, 4.763889),
+      const AirportDataWrap('SVO', 'Sheremetyevo International Airport', 'Russian Federation', 55.972642, 37.414589),
+      const AirportDataWrap('GRU', 'São Paulo-Guarulhos International Airport', 'Brazil', -23.432075, -46.469511),
+      const AirportDataWrap('LAX', 'Los Angeles International Airport', 'United States', 33.942495, -118.408068),
+      const AirportDataWrap('JFK', 'John F Kennedy International Airport', 'United States', 40.639751, -73.778926)];
 
   //// Binding instrumentation section ////
   static const String AIRPORT_LIST = 'airportList';
