@@ -2,7 +2,7 @@
 
 Demo/tutorial dart app for use of [mdcdalight](https://github.com/jonboj/mdcdalight) lib. Customized for mobile in Progressive Web App style with a `manifest.json`. For browser support Daflight is supported by Chrome desktop/android, or other browsers with native support for web components v0 like other blink based browsers.
 
- Hosted build of Daflight : https://tid4sport.com/daflight/web
+ Hosted build of Daflight : https://jonboj.net/daflight/web
 
 #### Usage
 From the `Airport list` compose a route, by airport selection with tap. The route will be shown in list and on map.
